@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">CHA</string>
+
+
+    <string name="next">NEXT</string>
+    <string name="prev">PREVIOUS</string>
+    <string name="start">SAVE</string>
+    <string name="title_activity_homescreen">homescreen</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_registration">Registration</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_patient_list">PatientList</string>
+    <string name="title_activity_edit_patient">EditPatient</string>
+    <string name="title_activity_school_list">Schools</string>
+    <string name="title_activity_edit_school">Edit School</string>
+    <string name="title_activity_question_landing">QuestionLanding</string>
+    <string name="title_activity_question_viewer">QuestionViewer</string>
+    <string name="title_activity_next_task_advisor">NextTaskAdvisor</string>
+
+
+    <string name="screen_name">Screen Name(the name other users see)</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_company_name">Company Name</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_mobile">Cell Number</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_reg_mobile">Cell Number (i.e 0725557766)</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_pre_password">Previous Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="btn_sign_up">Create Account</string>
+    <string name="btn_log_in">Get in</string>
+    <string name="btn_send_forgotten">Send</string>
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="title_activity_lost_password">LostPassword</string>
+
+<string name="lostpwdlead">
+    Enter your email address and a email will be sent with a provisional password.
+    \nDo not forget to update your password on your next login</string>
+
+    <string name="schooltitle">Schools</string>
+    <string name="edit">Edit School</string>
+    <string name="SEND">Send</string>
+
+
+    <string-array name="gender">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_patient_history">PatientHistory</string>
+</resources>

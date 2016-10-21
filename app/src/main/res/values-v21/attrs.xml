@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="MaterialLetterIcon">
+    <attr name="mli_shape_color" format="color"/>
+    <attr name="mli_shape_type" format="enum">
+      <enum name="circle" value="0"/>
+      <enum name="rect" value="1"/>
+      <enum name="round_rect" value="2"/>
+      <enum name="triangle" value="3"/>
+    </attr>
+    <attr name="mli_letter" format="string"/>
+    <attr name="mli_letter_color" format="color"/>
+    <attr name="mli_letter_size" format="integer"/>
+    <attr name="mli_letters_number" format="integer"/>
+    <attr name="mli_initials" format="boolean"/>
+    <attr name="mli_initials_number" format="integer"/>
+    <attr name="mli_round_rect_rx" format="float"/>
+    <attr name="mli_round_rect_ry" format="float"/>
+  </declare-styleable>
+
+
+  <declare-styleable name="FooterLayout">
+    <attr name="ft_color" format="color"/>
+    <attr name="ft_anim_duration" format="integer"/>
+    <attr name="ft_container_gravity" format="enum">
+      <enum name="start" value="0"/>
+      <enum name="center" value="1"/>
+      <enum name="end" value="2"/>
+    </attr>
+    <attr name="ft_fab_type" format="enum">
+      <enum name="mini" value="40"/>
+      <enum name="normal" value="56"/>
+    </attr>
+  </declare-styleable>
+</resources>

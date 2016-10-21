@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "696921661871",
+    "firebase_url": "https://childassessment-1a03c.firebaseio.com",
+    "project_id": "childassessment-1a03c",
+    "storage_bucket": "childassessment-1a03c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696921661871:android:0caa2faf7f62601c",
+        "android_client_info": {
+          "package_name": "ansteph.com.cha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696921661871-v4e3j9j8unres1bg0bctsjfhg5ihqaba.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ansteph.com.cha",
+            "certificate_hash": "45548C196F41804EE2F5CF3979CB7E99218BCCA5"
+          }
+        },
+        {
+          "client_id": "696921661871-vs4khetfagfa2vhl55sp0gqqal55rv4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqPN-dak6a8yCapKzE8rt8WUPiwrpwSHE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696921661871-vs4khetfagfa2vhl55sp0gqqal55rv4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

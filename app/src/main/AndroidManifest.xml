@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="ansteph.com.cha">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Splash"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.home.HomeScreen"
+            android:label="@string/title_activity_homescreen"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.registration.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.registration.Registration"
+            android:label="@string/title_activity_registration"
+            android:parentActivityName=".view.registration.Login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.registration.Login"/>
+        </activity>
+        <activity
+            android:name=".view.patient.PatientList"
+            android:label="@string/title_activity_patient_list"
+            android:parentActivityName=".view.home.HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.home.HomeScreen"/>
+        </activity>
+        <activity
+            android:name=".view.patient.EditPatient"
+            android:label="@string/title_activity_edit_patient"
+            android:parentActivityName=".view.patient.PatientList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.patient.PatientList"/>
+        </activity>
+        <activity
+            android:name=".view.school.SchoolList"
+            android:label="@string/title_activity_school_list"
+            android:parentActivityName=".view.home.HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.home.HomeScreen"/>
+        </activity>
+        <activity
+            android:name=".view.school.EditSchool"
+            android:label="@string/title_activity_edit_school"
+            android:parentActivityName=".view.school.SchoolList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.school.SchoolList"/>
+        </activity>
+        <activity
+            android:name=".view.questionnaire.QuestionLanding"
+            android:label="@string/title_activity_question_landing"
+            android:parentActivityName=".view.home.HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.home.HomeScreen"/>
+        </activity>
+        <activity
+            android:name=".view.questionnaire.QuestionViewer"
+            android:label="@string/title_activity_question_viewer"
+            android:parentActivityName=".view.questionnaire.QuestionLanding"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.questionnaire.QuestionLanding"/>
+        </activity>
+        <activity
+            android:name=".view.questionnaire.NextTaskAdvisor"
+            android:label="@string/title_activity_next_task_advisor"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.registration.LostPassword"
+            android:label="@string/title_activity_lost_password"
+            android:parentActivityName=".view.registration.Login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.registration.Login"/>
+        </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
+        <activity
+            android:name=".fabtransition.MapsActivity"
+            android:label="@string/title_activity_maps">
+        </activity>
+        <activity
+            android:name=".view.patient.PatientHistory"
+            android:label="@string/title_activity_patient_history"
+            android:parentActivityName=".view.patient.PatientList"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.patient.PatientList"/>
+        </activity>
+    </application>
+
+</manifest>

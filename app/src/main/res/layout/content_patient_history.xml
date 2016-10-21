@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_patient_history"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ansteph.com.cha.view.patient.PatientHistory"
+    tools:showIn="@layout/activity_patient_history">
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="571dp"
+
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:layout_editor_absoluteX="46dp">
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@mipmap/ic_user"
+            android:id="@+id/imageView3"
+            android:background="@color/windowBackground"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:layout_width="265dp"
+            android:layout_height="35dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/editText"
+            app:layout_constraintLeft_toRightOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_bias="0.25"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_alignStart="@+id/editText3"/>
+
+        <EditText
+            android:layout_width="265dp"
+            android:layout_height="35dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/editText2"
+            app:layout_constraintLeft_toRightOf="@+id/imageView3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_below="@+id/editText"
+            android:layout_alignStart="@+id/editText"
+            android:layout_marginTop="23dp"/>
+
+        <EditText
+            android:layout_width="265dp"
+            android:layout_height="35dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText3"
+            app:layout_constraintLeft_toRightOf="@+id/imageView3"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            android:layout_below="@+id/editText2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"/>
+        />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/asslayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/headerLayout"
+        android:background="@color/colorPrimary">
+        <Button
+
+            android:text="Start Assessment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnAssess"
+            android:layout_alignParentTop="true"
+            android:background="@null"
+            android:drawableLeft="@mipmap/ic_assess"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            />
+        <Button
+            android:text="Edit Patient Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnAssess"
+            android:layout_alignEnd="@+id/btnAssess"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"
+            android:background="@null"
+
+            android:id="@+id/btnEdit"
+            android:drawableLeft="@mipmap/ic_edit_white"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:text="HISTORY"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:id="@+id/textView18"
+            android:layout_below="@+id/btnEdit"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"/>
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/asslayout"
+        android:layout_alignParentStart="true"/>
+
+
+</RelativeLayout>
