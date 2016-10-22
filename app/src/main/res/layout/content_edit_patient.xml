@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ansteph.com.cha.view.patient.EditPatient"
     tools:showIn="@layout/activity_edit_patient"
-    android:background="@color/windowBackgroundSecondary">
+    android:background="@color/windowBackground">
 
 
     <RelativeLayout
@@ -28,7 +28,7 @@
             android:layout_height="200dp"
             app:srcCompat="@mipmap/ic_user"
             android:id="@+id/imageView3"
-            android:background="@color/windowBackground"
+            android:background="@color/windowBackgroundSecondary"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -261,11 +261,13 @@
     </LinearLayout>
 
     <TextView
-        android:text="Next of Kin"
+        android:text="NEXT OF KIN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"
         android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"

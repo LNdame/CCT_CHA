@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +12,10 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -29,9 +30,13 @@ import butterknife.OnClick;
 public class PatientList extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    private static final int CONTACTS = 0;
+    private static final int PATIENTS = 0;
+
     private static final int COUNTRIES = 1;
     private static final Random RANDOM = new Random();
+
+    RecyclerView.Adapter mPatientAdapter;
+    public SearchView search;
 
     private static final String[] desuNoto = {
             "Alane Avey", "Belen Brewster", "Brandon Brochu", "Carli Carrol", "Della Delrio",
@@ -46,6 +51,9 @@ public class PatientList extends AppCompatActivity {
             "Norway", "Panama", "Portugal", "Romania", "Russia", "Slovakia", "Vatican", "Zimbabwe"
     };
 
+
+    private List<String> list = new ArrayList<String>();
+
     @Bind(R.id.fab) FloatingActionButton fab;
 
     @Override
@@ -59,7 +67,10 @@ public class PatientList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+
         setupRecyclerView();
+        search = (SearchView) findViewById( R.id.search);
+        search.setOnQueryTextListener(listener);
     }
 
     @OnClick(R.id.fab)
@@ -74,23 +85,108 @@ public class PatientList extends AppCompatActivity {
 
 
     private void setContactsAdapter(String[] array) {
-        recyclerView.setAdapter(
-                new SimpleStringRecyclerViewAdapter(this, Arrays.asList(array), CONTACTS));
+        list = Arrays.asList(array); // TODO: 22/10/2016 when the object is being used change this logic 
+        mPatientAdapter = new  PatientRecyclerViewAdapter(this, Arrays.asList(array), PATIENTS);
+        recyclerView.setAdapter(mPatientAdapter);
     }
 
     private void setCountriesAdapter(String[] array) {
         recyclerView.setAdapter(
-                new SimpleStringRecyclerViewAdapter(this, Arrays.asList(array), COUNTRIES));
+                new PatientRecyclerViewAdapter(this, Arrays.asList(array), COUNTRIES));
     }
 
-    public static class SimpleStringRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
+
+
+    SearchView.OnQueryTextListener listener = new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String s) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String query) {
+            query = query.toLowerCase();
+            final List<String> filteredList = new ArrayList<>();
+
+            for (int i= 0; i<list.size(); i++)
+            {
+                final String text = list.get(i).toLowerCase();
+                if(text.contains(query)){
+                    filteredList.add(list.get(i));
+                }
+            }
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(PatientList.this));
+            mPatientAdapter =new PatientRecyclerViewAdapter(PatientList.this, filteredList, PATIENTS);
+            recyclerView.setAdapter(mPatientAdapter);
+            mPatientAdapter.notifyDataSetChanged();  // data set changed
+            return  true;
+        }
+    };
+
+
+
+
+
+    public static class PatientRecyclerViewAdapter
+            extends RecyclerView.Adapter<PatientRecyclerViewAdapter.ViewHolder> {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mValues;
+        private List<String> mPatientList;
         private int[] mMaterialColors;
         private int mType;
+
+        Context mContext;
+
+        public PatientRecyclerViewAdapter(Context context, List<String> items, int type) {
+            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
+            mMaterialColors = context.getResources().getIntArray(R.array.colors);
+            mBackground = mTypedValue.resourceId;
+            mPatientList = items;
+            mType = type;
+            mContext = context;
+        }
+
+        @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view =
+                    LayoutInflater.from(parent.getContext()).inflate(R.layout.mat_list_item, parent, false);
+            view.setBackgroundResource(mBackground);
+
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // TODO: 22/10/2016 change this to accomodate the patient item remove this label once done
+                    mContext.startActivity(new Intent(mContext, EditPatient.class));
+                }
+            });
+            return new ViewHolder(view);
+        }
+
+        @Override public void onBindViewHolder(final ViewHolder holder, int position) {
+            switch (mType) {
+                case PATIENTS:
+                    holder.mIcon.setInitials(true);
+                    holder.mIcon.setInitialsNumber(2);
+                    holder.mIcon.setLetterSize(18);
+                    break;
+                case COUNTRIES:
+                    holder.mIcon.setLettersNumber(3);
+                    holder.mIcon.setLetterSize(16);
+                    holder.mIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
+                    break;
+            }
+            holder.mBoundString = mPatientList.get(position);
+            holder.mIcon.setShapeColor(mMaterialColors[RANDOM.nextInt(mMaterialColors.length)]);
+            holder.mTextView.setText(mPatientList.get(position));
+            holder.mIcon.setLetter(mPatientList.get(position));
+        }
+
+        @Override public int getItemCount() {
+            return mPatientList.size();
+        }
+
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
@@ -112,46 +208,11 @@ public class PatientList extends AppCompatActivity {
         }
 
         public String getValueAt(int position) {
-            return mValues.get(position);
+            return mPatientList.get(position);
         }
 
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items, int type) {
-            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
-            mMaterialColors = context.getResources().getIntArray(R.array.colors);
-            mBackground = mTypedValue.resourceId;
-            mValues = items;
-            mType = type;
-        }
 
-        @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view =
-                    LayoutInflater.from(parent.getContext()).inflate(R.layout.mat_list_item, parent, false);
-            view.setBackgroundResource(mBackground);
-            return new ViewHolder(view);
-        }
 
-        @Override public void onBindViewHolder(final ViewHolder holder, int position) {
-            switch (mType) {
-                case CONTACTS:
-                    holder.mIcon.setInitials(true);
-                    holder.mIcon.setInitialsNumber(2);
-                    holder.mIcon.setLetterSize(18);
-                    break;
-                case COUNTRIES:
-                    holder.mIcon.setLettersNumber(3);
-                    holder.mIcon.setLetterSize(16);
-                    holder.mIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
-                    break;
-            }
-            holder.mBoundString = mValues.get(position);
-            holder.mIcon.setShapeColor(mMaterialColors[RANDOM.nextInt(mMaterialColors.length)]);
-            holder.mTextView.setText(mValues.get(position));
-            holder.mIcon.setLetter(mValues.get(position));
-        }
-
-        @Override public int getItemCount() {
-            return mValues.size();
-        }
     }
 
 }

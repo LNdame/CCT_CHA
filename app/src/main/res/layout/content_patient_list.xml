@@ -13,9 +13,31 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ansteph.com.cha.view.patient.PatientList"
     tools:showIn="@layout/activity_patient_list">
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="16sp"
+        android:hint="Search here"
+        android:layout_marginTop="20dp" />
+
+
+    <View
+        android:id="@+id/border"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/search"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorAccent"/>
 <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview"
     android:layout_width="match_parent"
+    android:layout_below="@+id/border"
     android:layout_height="match_parent" />
 
 

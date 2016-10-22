@@ -136,6 +136,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ansteph.com.cha.view.patient.PatientList"/>
         </activity>
+        <activity
+            android:name=".view.questionnaire.AssentForm"
+            android:label="@string/title_activity_assent_form"
+            android:parentActivityName=".view.patient.PatientHistory"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.patient.PatientHistory"/>
+        </activity>
     </application>
 
 </manifest>
