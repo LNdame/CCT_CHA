@@ -145,6 +145,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ansteph.com.cha.view.patient.PatientHistory"/>
         </activity>
+        <activity
+            android:name=".view.home.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

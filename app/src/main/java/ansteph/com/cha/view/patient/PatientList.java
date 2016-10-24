@@ -158,7 +158,7 @@ public class PatientList extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     // TODO: 22/10/2016 change this to accomodate the patient item remove this label once done
-                    mContext.startActivity(new Intent(mContext, EditPatient.class));
+                    mContext.startActivity(new Intent(mContext, PatientHistory.class));
                 }
             });
             return new ViewHolder(view);

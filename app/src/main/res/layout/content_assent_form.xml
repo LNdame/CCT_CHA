@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,4 +14,114 @@
     tools:context="ansteph.com.cha.view.questionnaire.AssentForm"
     tools:showIn="@layout/activity_assent_form">
 
-</RelativeLayout>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Did the patient provide a signed parental consent form:"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:id="@+id/textView8"
+
+            android:padding="2dp"
+            android:layout_margin="10dp"
+            />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:text="Yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton"
+                android:layout_weight="1"
+                android:layout_marginRight="32dp"/>
+
+            <RadioButton
+                android:text="No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton2"
+                android:layout_weight="1"
+                android:layout_marginRight="16dp"
+                android:paddingRight="8dp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="STRICTLY CONFIDENTIAL "
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="LEARNER ASSENT TO PARTICIPATE IN THE INTERGRATED SCHOOL HEALTH PROGRAMME"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="16dp"
+        android:text="@string/assent_text"/>
+
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Please indicate any condition for which you are receiving a treatment or medication (e.g. Asthma, Diabetes...) "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_margin="16dp"/>
+    <View
+        android:id="@+id/border"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/search"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorAccent"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:background="@color/windowBackgroundSecondary"
+        android:id="@+id/editText12"/>
+    <View
+        android:id="@+id/border1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/search"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorAccent"/>
+</LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>

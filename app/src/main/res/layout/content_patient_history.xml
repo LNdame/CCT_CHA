@@ -39,11 +39,12 @@
             app:layout_constraintVertical_bias="0.0"
             android:layout_marginBottom="16dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="265dp"
             android:layout_height="35dp"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="Jane"
+            android:textSize="20dp"
             android:ems="10"
             android:id="@+id/editText"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
@@ -52,13 +53,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintVertical_bias="0.25"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_alignStart="@+id/editText3"/>
+            android:layout_alignStart="@+id/editText3"
+            android:layout_marginTop="24dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="265dp"
             android:layout_height="35dp"
-            android:inputType="textPersonName"
-            android:text="Name"
+            android:textSize="20dp"
+            android:text="Doe"
             android:ems="10"
             android:id="@+id/editText2"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
@@ -70,10 +72,11 @@
             android:layout_alignStart="@+id/editText"
             android:layout_marginTop="23dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="265dp"
             android:layout_height="35dp"
-            android:inputType="number"
+            android:text="Grade 7"
+            android:textSize="20dp"
             android:ems="10"
             android:id="@+id/editText3"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
@@ -105,6 +108,7 @@
             android:id="@+id/btnAssess"
             android:layout_alignParentTop="true"
             android:background="@null"
+            android:onClick="gotoAssessPat"
             android:drawableLeft="@mipmap/ic_assess"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
@@ -118,7 +122,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="21dp"
             android:background="@null"
-
+            android:onClick="gotoEditPat"
             android:id="@+id/btnEdit"
             android:drawableLeft="@mipmap/ic_edit_white"
             android:textColor="@color/white"
@@ -141,6 +145,7 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/histRecyclerView"
         android:layout_marginLeft="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

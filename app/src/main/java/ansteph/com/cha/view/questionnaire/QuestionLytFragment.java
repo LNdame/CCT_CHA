@@ -15,15 +15,18 @@ import ansteph.com.cha.R;
  * create an instance of this fragment.
  */
 public class QuestionLytFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+
+
+    public static final String TAG = QuestionLytFragment.class.getSimpleName();
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String PAGE_TITLE = "title";
+    private static final String PAGE_NUM = "page";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private String title;
+    private int page;
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public QuestionLytFragment() {
         // Required empty public constructor
@@ -33,16 +36,18 @@ public class QuestionLytFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param title Parameter 1.
+     * @param pagenum Parameter 2.
+     * @param sectionNumber Parameter 3.
      * @return A new instance of fragment QuestionLytFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionLytFragment newInstance(String param1, String param2) {
+
+    public static QuestionLytFragment newInstance(String title, int pagenum, int sectionNumber) {
         QuestionLytFragment fragment = new QuestionLytFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(PAGE_TITLE, title);
+        args.putInt(PAGE_NUM, pagenum);
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,8 +56,8 @@ public class QuestionLytFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            title = getArguments().getString(PAGE_TITLE);
+            page = getArguments().getInt(PAGE_NUM);
         }
     }
 
@@ -60,7 +65,10 @@ public class QuestionLytFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_lyt, container, false);
+        View rootView= inflater.inflate(R.layout.fragment_question_lyt, container, false);
+
+
+        return rootView;
     }
 
 }
