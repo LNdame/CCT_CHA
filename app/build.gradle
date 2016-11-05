@@ -48,6 +48,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:9.4.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.github.clans:fab:1.6.2'
 }
 
 

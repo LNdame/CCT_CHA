@@ -150,6 +150,15 @@
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".view.export.ExportLanding"
+            android:label="@string/title_activity_export_landing"
+            android:parentActivityName=".view.home.HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ansteph.com.cha.view.home.HomeScreen"/>
+        </activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,8 +11,224 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ansteph.com.cha.view.questionnaire.QuestionLanding"
     tools:showIn="@layout/activity_question_landing">
 
-</RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_below="@+id/vsHeader"
+        android:padding="6dip" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+                <Button
+                    android:id="@+id/dash_btn_diabetes"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_vision"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Diabetes Screening" />
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    style="fabstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_diabetes"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"
+                    android:backgroundTintMode="src_over"
+                    />
+            </android.support.design.widget.CoordinatorLayout>
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord"
+                >
+                <Button
+                    android:id="@+id/dash_btn_oral"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_dental"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Oral Assessment " />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_oral"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+                <Button
+                    android:id="@+id/dash_btn_visual"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_vision"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Visual Screening" />
+
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_visual"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+                <Button
+                    android:id="@+id/dash_btn_nutritional"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_vision"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Nutritional" />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_nutritional"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+
+                <Button
+                    android:id="@+id/dash_btn_physical"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_physical"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Physical" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_physical"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+                <Button
+                    android:id="@+id/dash_btn_hearing"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_hearing"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Hearing Language Speech" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_hearing"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+
+                <Button
+                    android:id="@+id/dash_btn_BMI"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_calculator"
+                    android:onClick="questionnaireLaunch"
+                    android:text="BMI" />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_BMI"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+
+
+            <android.support.design.widget.CoordinatorLayout
+                style="@style/coord">
+                <Button
+                    android:id="@+id/dash_btn_Chronic"
+                    style="@style/HomeButton"
+                    android:drawableTop="@drawable/ic_chronic"
+                    android:onClick="questionnaireLaunch"
+                    android:text="Chronic Disease" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:layout_anchor="@id/dash_btn_Chronic"
+                    app:layout_anchorGravity="bottom|end"
+
+                    app:srcCompat="@drawable/ic_done_24dp"/>
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

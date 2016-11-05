@@ -181,7 +181,7 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO: 22/10/2016 change this to accomodate the school item remove this label once done
+                    // TODO: 22/10/2016 change this to accomodate the School item remove this label once done
                     mContext.startActivity(new Intent(mContext, EditSchool.class));
                 }
             });
