@@ -21,8 +21,10 @@ import java.util.Random;
 import ansteph.com.cha.R;
 import ansteph.com.cha.fabtransition.BaseActivity;
 import ansteph.com.cha.fabtransition.SheetLayout;
+import ansteph.com.cha.helper.DbHelper;
 import ansteph.com.cha.materiallettericon.MaterialLetterIcon;
 
+import ansteph.com.cha.model.School;
 import ansteph.com.cha.view.patient.PatientList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,10 +60,10 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
     RecyclerView.Adapter mSchoolAdapter;
     public SearchView search;
 
-    private List<String> list = new ArrayList<String>();
+    private List<School> list = new ArrayList<>();
 
     private static final int REQUEST_CODE = 1;
-
+    public DbHelper databhelper ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,15 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
         //setSupportActionBar(toolbar);
 
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        try {
+            databhelper= new DbHelper(getApplicationContext());
+            databhelper.createDatabase();
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
         search = (SearchView) findViewById( R.id.search);
         search.setOnQueryTextListener(listener);
 
@@ -80,6 +91,7 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
         mSheetLayout.setFab(mFab);
         mSheetLayout.setFabAnimationEndListener(this);
         setupRecyclerView();
+
 
 
     }
@@ -112,14 +124,11 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
 
 
 
-    private void setContactsAdapter(String[] array) {
-        recyclerView.setAdapter(
-                new SchoolRecyclerViewAdapter(this, Arrays.asList(array), CONTACTS));
-    }
+
 
     private void setCountriesAdapter(String[] array) {
-        list=Arrays.asList(array);
-        mSchoolAdapter= new SchoolRecyclerViewAdapter(this, Arrays.asList(array), COUNTRIES);
+        list=(ArrayList<School>)databhelper.getAllSchoolData();
+        mSchoolAdapter= new SchoolRecyclerViewAdapter(this, list, COUNTRIES);
         recyclerView.setAdapter(mSchoolAdapter);
     }
 
@@ -132,11 +141,11 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
         @Override
         public boolean onQueryTextChange(String query) {
             query = query.toLowerCase();
-            final List<String> filteredList = new ArrayList<>();
+            final List<School> filteredList = new ArrayList<>();
 
             for (int i= 0; i<list.size(); i++)
             {
-                final String text = list.get(i).toLowerCase();
+                final String text = list.get(i).getSchoolName().toLowerCase();
                 if(text.contains(query)){
                     filteredList.add(list.get(i));
                 }
@@ -158,13 +167,13 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mSchoolList;
+        private List<School> mSchoolList;
         private int[] mMaterialColors;
         private int mType;
         Context mContext;
 
 
-        public SchoolRecyclerViewAdapter(Context context, List<String> items, int type) {
+        public SchoolRecyclerViewAdapter(Context context, List<School> items, int type) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mMaterialColors = context.getResources().getIntArray(R.array.colors);
             mBackground = mTypedValue.resourceId;
@@ -206,29 +215,36 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
                     holder.mIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
                     break;
             }
-            holder.mBoundString = mSchoolList.get(position);
+            holder.mBoundString = mSchoolList.get(position).getSchoolName();
             holder.mIcon.setShapeColor(mMaterialColors[RANDOM.nextInt(mMaterialColors.length)]);
-            holder.mTextView.setText(mSchoolList.get(position));
-            holder.mIcon.setLetter(mSchoolList.get(position));
+            holder.mTextView.setText(mSchoolList.get(position).getSchoolName());
+            holder.mIcon.setLetter(mSchoolList.get(position).getSchoolName());
+            holder.mAddText.setText(mSchoolList.get(position).toString());
         }
 
         @Override public int getItemCount() {
             return mSchoolList.size();
         }
 
+        public String getValueAt(int position) {
+            return mSchoolList.get(position).getSchoolName();
+        }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
+
             public String mBoundString;
 
             public final View mView;
             public final MaterialLetterIcon mIcon;
             public final TextView mTextView;
+            public final TextView mAddText;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mIcon = (MaterialLetterIcon) view.findViewById(R.id.icon);
                 mTextView = (TextView) view.findViewById(android.R.id.text1);
+                mAddText = (TextView) view.findViewById(R.id.text_message_email);
             }
 
             @Override public String toString() {
@@ -236,9 +252,7 @@ public class SchoolList extends BaseActivity implements SheetLayout.OnFabAnimati
             }
         }
 
-        public String getValueAt(int position) {
-            return mSchoolList.get(position);
-        }
+
     }
 
 
