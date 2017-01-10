@@ -21,7 +21,10 @@ import java.util.List;
 import java.util.Random;
 
 import ansteph.com.cha.R;
+import ansteph.com.cha.helper.DbHelper;
 import ansteph.com.cha.materiallettericon.MaterialLetterIcon;
+import ansteph.com.cha.model.Patient;
+import ansteph.com.cha.model.School;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +40,7 @@ public class PatientList extends AppCompatActivity {
 
     RecyclerView.Adapter mPatientAdapter;
     public SearchView search;
+    public DbHelper databhelper ;
 
     private static final String[] desuNoto = {
             "Alane Avey", "Belen Brewster", "Brandon Brochu", "Carli Carrol", "Della Delrio",
@@ -53,6 +57,7 @@ public class PatientList extends AppCompatActivity {
 
 
     private List<String> list = new ArrayList<String>();
+    private List<Patient> Patientlist = new ArrayList<>();
 
     @Bind(R.id.fab) FloatingActionButton fab;
 
@@ -65,6 +70,15 @@ public class PatientList extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        try {
+            databhelper= new DbHelper(getApplicationContext());
+            databhelper.createDatabase();
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
@@ -85,14 +99,14 @@ public class PatientList extends AppCompatActivity {
 
 
     private void setContactsAdapter(String[] array) {
-        list = Arrays.asList(array); // TODO: 22/10/2016 when the object is being used change this logic 
-        mPatientAdapter = new  PatientRecyclerViewAdapter(this, Arrays.asList(array), PATIENTS);
+        Patientlist=(ArrayList<Patient>)databhelper.getAllPatientData(); // TODO: 22/10/2016 when the object is being used change this logic
+        mPatientAdapter = new  PatientRecyclerViewAdapter(this, Patientlist, PATIENTS);
         recyclerView.setAdapter(mPatientAdapter);
     }
 
     private void setCountriesAdapter(String[] array) {
-        recyclerView.setAdapter(
-                new PatientRecyclerViewAdapter(this, Arrays.asList(array), COUNTRIES));
+      //  recyclerView.setAdapter(
+       //         new PatientRecyclerViewAdapter(this, Arrays.asList(array), COUNTRIES));
     }
 
 
@@ -106,13 +120,13 @@ public class PatientList extends AppCompatActivity {
         @Override
         public boolean onQueryTextChange(String query) {
             query = query.toLowerCase();
-            final List<String> filteredList = new ArrayList<>();
+            final List<Patient> filteredList = new ArrayList<>();
 
-            for (int i= 0; i<list.size(); i++)
+            for (int i= 0; i<Patientlist.size(); i++)
             {
-                final String text = list.get(i).toLowerCase();
+                final String text = Patientlist.get(i).getFirstname(). toLowerCase();
                 if(text.contains(query)){
-                    filteredList.add(list.get(i));
+                    filteredList.add(Patientlist.get(i));
                 }
             }
 
@@ -133,13 +147,13 @@ public class PatientList extends AppCompatActivity {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mPatientList;
+        private List<Patient> mPatientList;
         private int[] mMaterialColors;
         private int mType;
 
         Context mContext;
 
-        public PatientRecyclerViewAdapter(Context context, List<String> items, int type) {
+        public PatientRecyclerViewAdapter(Context context, List<Patient> items, int type) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mMaterialColors = context.getResources().getIntArray(R.array.colors);
             mBackground = mTypedValue.resourceId;
@@ -177,10 +191,10 @@ public class PatientList extends AppCompatActivity {
                     holder.mIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
                     break;
             }
-            holder.mBoundString = mPatientList.get(position);
+            holder.mBoundString = mPatientList.get(position).getFirstname();
             holder.mIcon.setShapeColor(mMaterialColors[RANDOM.nextInt(mMaterialColors.length)]);
-            holder.mTextView.setText(mPatientList.get(position));
-            holder.mIcon.setLetter(mPatientList.get(position));
+            holder.mTextView.setText(mPatientList.get(position).getFirstname());
+            holder.mIcon.setLetter(mPatientList.get(position).getFirstname());
         }
 
         @Override public int getItemCount() {
@@ -208,7 +222,7 @@ public class PatientList extends AppCompatActivity {
         }
 
         public String getValueAt(int position) {
-            return mPatientList.get(position);
+            return mPatientList.get(position).getFirstname();
         }
 
 

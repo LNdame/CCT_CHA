@@ -16,7 +16,11 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import ansteph.com.cha.model.Patient;
+import ansteph.com.cha.model.QuestionSubdivision;
 import ansteph.com.cha.model.School;
+import ansteph.com.cha.model.ScreeningCategory;
+import ansteph.com.cha.model.ScreeningQuestion;
 
 /**
  * Created by loicStephan on 06/11/2016.
@@ -24,7 +28,7 @@ import ansteph.com.cha.model.School;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    public static  String DATABASE_NAME = "healthscreen.db";//healthscreen.sqlite
+    public static  String DATABASE_NAME = "cha.db";//healthscreen.sqlite
     public static  String DB_PATH= "/data/data/ansteph.com.cha/databases/";
 
     private static SQLiteDatabase chadb;
@@ -284,5 +288,332 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 
+
+    /********************Patient Table Fields ************/
+
+    public static final String KEY_PATIENT_ID = "patientID";
+    public static final String KEY_PATIENT_NAME = "firstname";
+    public static final String KEY_PATIENT_SURNAME = "surname";
+    public static final String KEY_PATIENT_GRADE = "grade";
+    public static final String KEY_PATIENT_GENDER = "gender";
+    public static final String KEY_PATIENT_EMIS = "emisnum";
+    public static final String KEY_PATIENT_SCHOOL = "school";
+    public static final String KEY_PATIENT_SCHOOLID = "schoolID";
+    public static final String KEY_PATIENT_DOB = "DOB";
+    public static final String KEY_PATIENT_NOK_NAME = "nokname";
+    public static final String KEY_PATIENT_NOK_CONTACT = "nokcontact";
+    public static final String KEY_PATIENT_NOK_ADD1 = "nokaddressline1";
+    public static final String KEY_PATIENT_NOK_ADD2 = "nokaddressline2";
+    public static final String KEY_PATIENT_R2H= "hasroadtohealth";
+
+    //((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0)
+
+    public List<Patient> getAllPatientData() {
+        List<Patient> List = new ArrayList<Patient>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + patient_Table;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Patient pat = new Patient(
+                            ((cursor.getString(0))!=null ? Integer.parseInt(cursor.getString(0)):0),
+                            (cursor.getString(1)),
+                            (cursor.getString(2)),
+                            (cursor.getString(3)),
+                            (cursor.getString(4)) ,
+                            (cursor.getString(5)) ,
+                            (cursor.getString(6)) ,
+                            ((cursor.getString(7))!=null ? Integer.parseInt(cursor.getString(7)):0) ,
+                            (cursor.getString(8)),
+                            (cursor.getString(9)),
+                            (cursor.getString(10)),
+                            (cursor.getString(11)),
+                            (cursor.getString(12)),
+                            (cursor.getInt(13)>0)
+                    );
+
+
+
+                    // Adding contact to list
+                    List.add(pat);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
+
+
+    public boolean addPatientData(Patient patient) {
+
+        boolean added = false;
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+
+            ContentValues cVal = new ContentValues();
+
+            cVal.put(KEY_PATIENT_NAME, sqlEscapeString(patient.getFirstname()));
+            cVal.put(KEY_PATIENT_SURNAME, sqlEscapeString(patient.getSurname()));
+            cVal.put(KEY_PATIENT_GRADE, sqlEscapeString(patient.getGrade()));
+            cVal.put(KEY_PATIENT_GENDER, sqlEscapeString(patient.getGender()));
+            cVal.put(KEY_PATIENT_SCHOOL, sqlEscapeString(patient.getSchool()));
+            cVal.put(KEY_PATIENT_SCHOOLID, sqlEscapeString(String.valueOf(patient.getSchoolID()) ));
+            cVal.put(KEY_PATIENT_DOB, sqlEscapeString(patient.getDob()));
+            cVal.put(KEY_PATIENT_NOK_NAME, sqlEscapeString(patient.getNextofKinName()));
+            cVal.put(KEY_PATIENT_NOK_CONTACT, sqlEscapeString(patient.getNextofKinContact()));
+            cVal.put(KEY_PATIENT_NOK_ADD1, sqlEscapeString(patient.getAddline1()));
+            cVal.put(KEY_PATIENT_NOK_ADD2, sqlEscapeString(patient.getAddline2()));
+            cVal.put(KEY_PATIENT_R2H, patient.HasRoadtoHealth());
+           // cVal.put(KEY_PATIENT_R2H, sqlEscapeString(sch.getAddresslineTwo()));
+
+            chadb.insert(patient_Table, null, cVal);
+            added = true;
+        } catch (Exception e) {
+            // TODO: handle exception
+            added= false;
+        }
+
+        return added;
+        // Closing database connection
+    }
+
+    public boolean UpdatePatientData(Patient patient) {
+
+        boolean added = false;
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+
+            ContentValues cVal = new ContentValues();
+
+            cVal.put(KEY_PATIENT_NAME, sqlEscapeString(patient.getFirstname()));
+            cVal.put(KEY_PATIENT_SURNAME, sqlEscapeString(patient.getSurname()));
+            cVal.put(KEY_PATIENT_GRADE, sqlEscapeString(patient.getGrade()));
+            cVal.put(KEY_PATIENT_GENDER, sqlEscapeString(patient.getGender()));
+            cVal.put(KEY_PATIENT_SCHOOL, sqlEscapeString(patient.getSchool()));
+            cVal.put(KEY_PATIENT_SCHOOLID, sqlEscapeString(String.valueOf(patient.getSchoolID()) ));
+            cVal.put(KEY_PATIENT_DOB, sqlEscapeString(patient.getDob()));
+            cVal.put(KEY_PATIENT_NOK_NAME, sqlEscapeString(patient.getNextofKinName()));
+            cVal.put(KEY_PATIENT_NOK_CONTACT, sqlEscapeString(patient.getNextofKinContact()));
+            cVal.put(KEY_PATIENT_NOK_ADD1, sqlEscapeString(patient.getAddline1()));
+            cVal.put(KEY_PATIENT_NOK_ADD2, sqlEscapeString(patient.getAddline2()));
+            cVal.put(KEY_PATIENT_R2H, patient.HasRoadtoHealth());
+
+
+            chadb.update(patient_Table,   cVal, KEY_PATIENT_ID+" = ? ", new String[]{ String.valueOf(patient.getId()) });
+            added = true;
+        } catch (Exception e) {
+            // TODO: handle exception
+            added= false;
+        }
+
+        return added;
+        // Closing database connection
+    }
+
+
+    /********************screenincategory Table Fields ************/
+
+
+    // public ScreeningCategory(int scCatID, String scCatname, String scCatdesc)
+
+    public List<ScreeningCategory> getAllScreeningCatData() {
+        List<ScreeningCategory> List = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + screenincategory_Table;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    ScreeningCategory sch = new ScreeningCategory(
+                            Integer.parseInt(cursor.getString(0)),
+                            (cursor.getString(1)),
+                            (cursor.getString(2))
+                    );
+
+                    // Adding contact to list
+                    List.add(sch);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
+
+
+
+
+    /********************questionsubdivision Table Fields ************/
+
+//  public QuestionSubdivision(int qusubID, int scCatID, String qusubName, String qusubDesc)
+
+    public List<QuestionSubdivision> getAllQuestionSubData() {
+        List<QuestionSubdivision> List = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + questionsubdivision_Table;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    QuestionSubdivision qs = new QuestionSubdivision(
+                            Integer.parseInt(cursor.getString(0)),
+                            Integer.parseInt(cursor.getString(3)),
+                            (cursor.getString(1)),
+                            (cursor.getString(2))
+                    );
+
+                    // Adding contact to list
+                    List.add(qs);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
+
+
+
+
+    public List<QuestionSubdivision> getQuestionSubData(int screenCatID) {
+        List<QuestionSubdivision> List = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + questionsubdivision_Table+ " WHERE scCatID = "+screenCatID;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    QuestionSubdivision qs = new QuestionSubdivision(
+                            Integer.parseInt(cursor.getString(0)),
+                            Integer.parseInt(cursor.getString(3)),
+                            (cursor.getString(1)),
+                            (cursor.getString(2))
+                    );
+
+                    // Adding contact to list
+                    List.add(qs);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
+
+
+
+    /********************screeningquestion Table Fields ************/
+
+
+//  ScreeningQuestion(int scquID, String scqudesc, int scCatID, int qusubID, String quType)
+
+    public List<ScreeningQuestion> getAllScreeningQuestData() {
+        List<ScreeningQuestion> List = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + screeningquestion_Table;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    ScreeningQuestion sq = new ScreeningQuestion(
+                            Integer.parseInt(cursor.getString(0)),
+                            (cursor.getString(1)),
+                            Integer.parseInt(cursor.getString(2)),
+                            Integer.parseInt(cursor.getString(3)),
+                            (cursor.getString(4))
+                    );
+
+                    // Adding item to list
+                    List.add(sq);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
+
+
+    public List<ScreeningQuestion> getScreeningQuestData(int screenCatID, int questSubID ) {
+        List<ScreeningQuestion> List = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + screeningquestion_Table + " WHERE scCatID = "+screenCatID+" AND qusubID = "+questSubID;
+
+        try {
+            if(chadb==null)
+            {
+                openDatabase();
+            }
+            Cursor cursor = chadb.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    ScreeningQuestion sq = new ScreeningQuestion(
+                            Integer.parseInt(cursor.getString(0)),
+                            (cursor.getString(1)),
+                            Integer.parseInt(cursor.getString(2)),
+                            Integer.parseInt(cursor.getString(3)),
+                            (cursor.getString(4))
+                    );
+
+                    // Adding item to list
+                    List.add(sq);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException se) {
+            // TODO: handle exception
+            se.printStackTrace();;
+        }
+        return List;
+    }
 
 }

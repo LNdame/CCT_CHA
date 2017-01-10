@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="questionLayoutStyle">
+        <attr  name="questionStyle" format ="reference"/>
+        <attr name="headerStyle" format = "reference"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="screening_item">
+        <attr name="leadingtitle" format ="string" />
+        <attr name="title" format ="string" />
+    </declare-styleable>
+
+</resources>
+

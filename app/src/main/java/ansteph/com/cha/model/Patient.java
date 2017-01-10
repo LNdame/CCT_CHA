@@ -8,20 +8,26 @@ import java.util.Date;
 
 public class Patient {
 
-    private String id;
+    private int id;
     private String firstname;
     private String surname;
     private String grade;
     private String gender;
-    private boolean hasRoadtoHealth;
-    private Date dob;
+    private String emisNum;
+    private String school;
+    private int schoolID;
+    private String dob;
 
     private String nextofKinName;
     private String nextofKinContact;
 
     private String addline1 ;
     private String addline2;
-    private String school;
+
+    private boolean hasRoadtoHealth;
+
+
+
 
 
     //Created for testing purpose
@@ -30,42 +36,69 @@ public class Patient {
         this.surname = surname;
     }
 
-    public Patient(String firstname, String surname, String grade, String gender, boolean hasRoadtoHealth,
-                   Date dob, String nextofKinName, String nextofKinContact, String addline1, String addline2) {
-        this.firstname = firstname;
-        this.surname = surname;
-        this.grade = grade;
-        this.gender = gender;
-        this.hasRoadtoHealth = hasRoadtoHealth;
-        this.dob = dob;
-        this.nextofKinName = nextofKinName;
-        this.nextofKinContact = nextofKinContact;
-        this.addline1 = addline1;
-        this.addline2 = addline2;
+    public Patient() {
     }
 
-    public Patient(String id, String firstname, String surname, String grade, String gender, boolean hasRoadtoHealth,
-                   Date dob, String nextofKinName, String nextofKinContact, String addline1, String addline2, String school) {
+
+    public Patient(int id, String firstname, String surname, String grade, String gender, String emisNum, String school, int schoolID, String dob,
+                   String nextofKinName, String nextofKinContact, String addline1, String addline2, boolean hasRoadtoHealth) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
         this.grade = grade;
         this.gender = gender;
-        this.hasRoadtoHealth = hasRoadtoHealth;
+        this.emisNum = emisNum;
+        this.school = school;
+        this.schoolID = schoolID;
         this.dob = dob;
         this.nextofKinName = nextofKinName;
         this.nextofKinContact = nextofKinContact;
         this.addline1 = addline1;
         this.addline2 = addline2;
+        this.hasRoadtoHealth = hasRoadtoHealth;
+    }
+
+    public Patient(int id, String firstname, String surname, String grade,
+                   String gender, String emisNum, String school, int schoolID, String dob,
+                   String nextofKinName, String nextofKinContact, String addline1, String addline2) {
+        this.id = id;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.grade = grade;
+        this.gender = gender;
+        this.emisNum = emisNum;
         this.school = school;
+        this.schoolID = schoolID;
+        this.dob = dob;
+        this.nextofKinName = nextofKinName;
+        this.nextofKinContact = nextofKinContact;
+        this.addline1 = addline1;
+        this.addline2 = addline2;
     }
 
 
-    public String getId() {
+    public Patient(String firstname, String surname, String grade, String gender, String emisNum, String school, int schoolID, String dob,
+                   String nextofKinName, String nextofKinContact, String addline1, String addline2, boolean hasRoadtoHealth) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.grade = grade;
+        this.gender = gender;
+        this.emisNum = emisNum;
+        this.school = school;
+        this.schoolID = schoolID;
+        this.dob = dob;
+        this.nextofKinName = nextofKinName;
+        this.nextofKinContact = nextofKinContact;
+        this.addline1 = addline1;
+        this.addline2 = addline2;
+        this.hasRoadtoHealth = hasRoadtoHealth;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -101,7 +134,7 @@ public class Patient {
         this.gender = gender;
     }
 
-    public boolean isHasRoadtoHealth() {
+    public boolean HasRoadtoHealth() {
         return hasRoadtoHealth;
     }
 
@@ -109,11 +142,11 @@ public class Patient {
         this.hasRoadtoHealth = hasRoadtoHealth;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -157,6 +190,21 @@ public class Patient {
         this.school = school;
     }
 
+    public String getEmisNum() {
+        return emisNum;
+    }
+
+    public void setEmisNum(String emisNum) {
+        this.emisNum = emisNum;
+    }
+
+    public int getSchoolID() {
+        return schoolID;
+    }
+
+    public void setSchoolID(int schoolID) {
+        this.schoolID = schoolID;
+    }
 
     @Override
     public String toString() {

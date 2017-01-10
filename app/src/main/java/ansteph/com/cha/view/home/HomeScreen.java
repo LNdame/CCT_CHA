@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
@@ -16,6 +17,8 @@ import com.github.clans.fab.FloatingActionButton;
 
 import ansteph.com.cha.R;
 import ansteph.com.cha.view.patient.PatientList;
+import ansteph.com.cha.view.questionnaire.QuestionLanding;
+import ansteph.com.cha.view.questionnaire.QuestionViewer;
 import ansteph.com.cha.view.school.SchoolList;
 
 public class HomeScreen extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class HomeScreen extends AppCompatActivity {
 
     FloatingActionMenu materialDesignFAM;
   FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
-
+ImageButton imgbtnStart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,15 @@ public class HomeScreen extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(getApplicationContext(), SchoolList.class));
+            }
+        });
+
+        imgbtnStart = (ImageButton) findViewById(R.id.imgbtnStart);
+        imgbtnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getApplicationContext(), QuestionLanding.class));
             }
         });
 

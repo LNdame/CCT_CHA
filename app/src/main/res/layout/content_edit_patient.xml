@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,6 +14,8 @@
     android:id="@+id/content_edit_patient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="48dp"
+    android:paddingBottom="100dp"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ansteph.com.cha.view.patient.EditPatient"
@@ -14,6 +24,7 @@
 
 
     <RelativeLayout
+        android:layout_marginTop="5dp"
         android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,49 +52,51 @@
 
         <EditText
             android:layout_width="265dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:hint="Firstname"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/edtfirstname"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/edtsurname"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintVertical_bias="0.25"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_alignStart="@+id/editText3"/>
+            android:layout_marginTop="16dp"
+            android:layout_alignStart="@+id/edtgrade"/>
 
         <EditText
             android:layout_width="265dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:hint="Surname"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/edtsurname"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
             app:layout_constraintVertical_bias="0.0"
-            android:layout_below="@+id/editText"
-            android:layout_alignStart="@+id/editText"
+            android:layout_below="@+id/edtfirstname"
+            android:layout_alignStart="@+id/edtfirstname"
             android:layout_marginTop="23dp"/>
 
         <EditText
             android:layout_width="265dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:hint="Grade"
+            android:id="@+id/edtgrade"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             android:layout_marginEnd="17dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            android:layout_below="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/edtfirstname"
+            android:layout_below="@+id/edtsurname"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="23dp"/>
         />
 
 
@@ -108,7 +121,7 @@
             <TextView
                 android:text="Emis Number"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:id="@+id/textView5"
                 android:padding="5dp"
                 android:paddingTop="4dp"
@@ -154,7 +167,7 @@
             <TextView
                 android:text="Does the child have a  'Road to Health' Card"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:id="@+id/textView8"
 
                 android:padding="2dp"
@@ -176,11 +189,11 @@
 
             <EditText
                 android:layout_width="315dp"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:inputType="numberSigned"
                 android:ems="10"
                 tools:layout_editor_absoluteX="0dp"
-                android:id="@+id/editText4"
+                android:id="@+id/edtemisnum"
 
                 android:layout_alignParentBottom="true"
                 android:layout_margin="10dp"
@@ -191,7 +204,7 @@
             <Spinner
                 android:layout_width="315dp"
                 android:layout_height="35dp"
-                android:id="@+id/spinner2"
+                android:id="@+id/spingender"
 
                 android:layout_centerVertical="true"
                 android:layout_margin="10dp"
@@ -202,10 +215,10 @@
             <Spinner
                 android:layout_width="315dp"
                 android:layout_height="35dp"
-                android:id="@+id/spinner"
+                android:id="@+id/spinschool"
 
-                android:layout_above="@+id/spinner2"
-                android:layout_alignEnd="@+id/spinner2"
+                android:layout_above="@+id/spingender"
+                android:layout_alignEnd="@+id/spingender"
                 android:layout_margin="10dp"/>
 
             <RelativeLayout
@@ -217,13 +230,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/textView7"
+                    android:id="@+id/txtdob"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@android:drawable/ic_menu_my_calendar"
                     android:layout_alignParentEnd="true"
+                    android:id="@+id/imgcalendar"
                     />
 
 
@@ -242,7 +256,7 @@
                     android:text="Yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioButton"
+                    android:id="@+id/radYes"
                     android:layout_weight="1"
                     android:layout_marginRight="32dp"/>
 
@@ -250,7 +264,7 @@
                     android:text="No"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/radNo"
                     android:layout_weight="1"
                     android:layout_marginRight="16dp"
                     android:paddingRight="8dp"/>
@@ -291,7 +305,7 @@
             <TextView
                 android:text="Next of Kin Name"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:id="@+id/textView11"
                 android:layout_margin="10dp"
                 android:gravity="center"
@@ -300,7 +314,7 @@
             <TextView
                 android:text="Next of Kin Contact Details"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:id="@+id/textView12"
                 android:layout_margin="10dp"
                 android:gravity="center"
@@ -309,7 +323,7 @@
             <TextView
                 android:text="Address Line 1"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:id="@+id/textView13"
                 android:layout_margin="10dp"
                 android:gravity="center"
@@ -338,34 +352,34 @@
 
             <EditText
                 android:layout_width="315dp"
-                android:layout_height="35dp"
-                android:inputType="number"
+                android:layout_height="45dp"
+                android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText5"
+                android:id="@+id/edtnokname"
                 android:layout_margin="10dp"
                 />
             <EditText
                 android:layout_width="315dp"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText6"
+                android:id="@+id/edtnokcontact"
                 android:layout_margin="10dp"
                 />
             <EditText
                 android:layout_width="315dp"
-                android:layout_height="35dp"
-                android:inputType="number"
+                android:layout_height="45dp"
+                android:inputType="text"
                 android:ems="10"
-                android:id="@+id/editText7"
+                android:id="@+id/edtnokaddline1"
                 android:layout_margin="10dp"
                 />
             <EditText
                 android:layout_width="315dp"
-                android:layout_height="35dp"
-                android:inputType="number"
+                android:layout_height="45dp"
+                android:inputType="text"
                 android:ems="10"
-                android:id="@+id/editText8"
+                android:id="@+id/edtnokaddline2"
                 android:layout_margin="10dp"
                 />
 
@@ -374,4 +388,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnaddPatient"
+        android:layout_margin="10dp"
+        android:text="Add patient"
+        android:onClick="registerPatient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

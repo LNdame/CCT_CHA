@@ -46,14 +46,14 @@
             android:text="Jane"
             android:textSize="20dp"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/edtfirstname"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/edtsurname"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintVertical_bias="0.25"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_alignStart="@+id/editText3"
+            android:layout_alignStart="@+id/edtgrade"
             android:layout_marginTop="24dp"/>
 
         <TextView
@@ -62,14 +62,14 @@
             android:textSize="20dp"
             android:text="Doe"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/edtsurname"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
             app:layout_constraintVertical_bias="0.0"
-            android:layout_below="@+id/editText"
-            android:layout_alignStart="@+id/editText"
+            android:layout_below="@+id/edtfirstname"
+            android:layout_alignStart="@+id/edtfirstname"
             android:layout_marginTop="23dp"/>
 
         <TextView
@@ -78,13 +78,13 @@
             android:text="Grade 7"
             android:textSize="20dp"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/edtgrade"
             app:layout_constraintLeft_toRightOf="@+id/imageView3"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             android:layout_marginEnd="17dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            android:layout_below="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/edtfirstname"
+            android:layout_below="@+id/edtsurname"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"/>
         />

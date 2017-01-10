@@ -32,4 +32,16 @@
       <enum name="normal" value="56"/>
     </attr>
   </declare-styleable>
+
+  <declare-styleable name="questionLayoutStyle">
+    <attr  name="android:gravity" />
+    <attr name="android:layout_gravity" />
+    <attr name="android:layout_width" />
+    <attr name="android:layout_height" />
+    <attr name="android:minWidth"/>
+    <attr name="android:minHeight"/>
+    <attr name="android:drawablePadding" />
+    <attr name="android:padding" />
+    <attr name="android:layout_weight" />
+  </declare-styleable>
 </resources>

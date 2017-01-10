@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              style="@style/questionnaireItemStyle"
+              android:orientation="vertical"
+              android:id="@+id/quest_open_closelyt"
+    >
+    <TextView
+        android:text="Question"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtquestiondesc"/>
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:text="Yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radYes"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:text="No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radNo"
+            android:layout_weight="1"/>
+    </RadioGroup>
+
+
+</LinearLayout>

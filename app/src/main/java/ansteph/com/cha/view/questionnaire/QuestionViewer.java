@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ansteph.com.cha.R;
+import ansteph.com.cha.app.Constants;
 
 public class QuestionViewer extends AppCompatActivity {
 
@@ -26,6 +27,8 @@ public class QuestionViewer extends AppCompatActivity {
     private TextView[] dots;
     private Button btnprevious, btnNext;
 
+    private int screenID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,12 @@ public class QuestionViewer extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle b = getIntent().getExtras();
+        if (b!=null){
+            setScreenID(b.getInt(Constants.SCREENID_KEY));
+        }
+
+        changeTitle(screenID);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -178,6 +187,34 @@ public class QuestionViewer extends AppCompatActivity {
                 default: return null;
             }
 
+        }
+    }
+
+    public int getScreenID() {
+        return screenID;
+    }
+
+    public void setScreenID(int screenID) {
+        this.screenID = screenID;
+    }
+
+
+    public void changeTitle(int screenID)
+    {
+        switch (screenID)
+        {
+            case Constants.DIABETES_SCRID: setTitle("Diabetes Screening"); break;
+            case Constants.TB_SCRID: setTitle("TB Screening"); break;
+            case Constants.NUTRITIONAL_SCRID :setTitle("Nutritional Assessment"); break;
+            case Constants.VISUAL_SCRID : setTitle("Visual Assessment"); break;
+            case Constants.HEARING_SCRID :setTitle("Hearing Assessment"); break;
+            case Constants.PHYSICAL_SCRID:setTitle("Physical Assessment"); break;
+            case Constants.MENTAL_SCRID:setTitle("Mental Assessment"); break;
+            case Constants.EPILEPSY_SCRID :setTitle("Epilepsy Screening"); break;
+            case Constants.ASTHMA_SCRID :setTitle("Asthma Screening"); break;
+            case Constants.ANAEMIA_SCRID :setTitle("Anaemia Screening"); break;
+            case Constants.CEREBRAL_PALSY_SCRID:setTitle("Cerebral Palsy Screening"); break;
+            default: setTitle("Question Viewer"); break;
         }
     }
 

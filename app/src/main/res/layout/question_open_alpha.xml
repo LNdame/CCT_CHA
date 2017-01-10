@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              style="@style/questionnaireItemStyle"
+              android:orientation="vertical"
+              android:id="@+id/quest_open_endedlyt"
+    >
+
+
+
+    <TextView
+        android:text="Question alpha"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtquestiondesc"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect"
+        android:ems="10"
+        android:id="@+id/txtresponse"/>
+
+
+</LinearLayout>

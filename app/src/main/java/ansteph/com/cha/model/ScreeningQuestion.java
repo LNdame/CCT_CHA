@@ -10,14 +10,15 @@ public class ScreeningQuestion {
     String scqudesc;
     int scCatID;
     int qusubID;
+    String quType;
 
-    public ScreeningQuestion(int scquID, String scqudesc, int scCatID, int qusubID) {
+    public ScreeningQuestion(int scquID, String scqudesc, int scCatID, int qusubID, String quType) {
         this.scquID = scquID;
         this.scqudesc = scqudesc;
         this.scCatID = scCatID;
         this.qusubID = qusubID;
+        this.quType = quType;
     }
-
 
     public ScreeningQuestion(String scqudesc, int scCatID, int qusubID) {
         this.scqudesc = scqudesc;
@@ -55,5 +56,13 @@ public class ScreeningQuestion {
 
     public void setQusubID(int qusubID) {
         this.qusubID = qusubID;
+    }
+
+    public String getQuType() {
+        return quType;
+    }
+
+    public void setQuType(String quType) {
+        this.quType = quType;
     }
 }

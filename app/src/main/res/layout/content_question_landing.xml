@@ -33,52 +33,25 @@
             android:layout_weight="1"
             android:orientation="horizontal" >
 
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
-                <Button
-                    android:id="@+id/dash_btn_diabetes"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_vision"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Diabetes Screening" />
+           <ansteph.com.cha.customview.Screening_item
+               android:id="@+id/dash_btn_diabetes"
+               style="@style/coord"
+               app:title="Diabetes Screening"
+               app:leadingtitle= "D S"
 
+               >
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab"
-                    style="fabstyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_diabetes"
-                    app:layout_anchorGravity="bottom|end"
+           </ansteph.com.cha.customview.Screening_item>
 
-                    app:srcCompat="@drawable/ic_done_24dp"
-                    android:backgroundTintMode="src_over"
-                    />
-            </android.support.design.widget.CoordinatorLayout>
-
-            <android.support.design.widget.CoordinatorLayout
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_oral"
                 style="@style/coord"
+                app:title="Oral Assessment"
+                app:leadingtitle= "O A"
+                android:onClick="questionnaireLaunch"
                 >
-                <Button
-                    android:id="@+id/dash_btn_oral"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_dental"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Oral Assessment " />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_oral"
-                    app:layout_anchorGravity="bottom|end"
-
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-
-
-            </android.support.design.widget.CoordinatorLayout>
+            </ansteph.com.cha.customview.Screening_item>
 
         </LinearLayout>
 
@@ -87,46 +60,28 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal" >
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
-                <Button
-                    android:id="@+id/dash_btn_visual"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_vision"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Visual Screening" />
+
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_visual"
+                style="@style/coord"
+                app:title="Visual Screening"
+                app:leadingtitle= "V S"
+                android:onClick="questionnaireLaunch"
+                >
+
+            </ansteph.com.cha.customview.Screening_item>
+
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_nutritional"
+                style="@style/coord"
+                app:title="Nutritional Assessment"
+                app:leadingtitle= "N A"
+                android:onClick="questionnaireLaunch"
+                >
+
+            </ansteph.com.cha.customview.Screening_item>
 
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_visual"
-                    app:layout_anchorGravity="bottom|end"
-
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
-
-
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
-                <Button
-                    android:id="@+id/dash_btn_nutritional"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_vision"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Nutritional" />
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_nutritional"
-                    app:layout_anchorGravity="bottom|end"
-
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -135,46 +90,27 @@
             android:layout_weight="1"
             android:orientation="horizontal" >
 
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_physical"
+                style="@style/coord"
+                app:title="Physical Assessment"
+                app:leadingtitle= "P A"
+                android:onClick="questionnaireLaunch"
+                >
 
-                <Button
-                    android:id="@+id/dash_btn_physical"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_physical"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Physical" />
+            </ansteph.com.cha.customview.Screening_item>
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_physical"
-                    app:layout_anchorGravity="bottom|end"
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_hearing"
+                style="@style/coord"
+                app:title="Hearing Language Speech"
+                app:leadingtitle= "H L S"
+                android:onClick="questionnaireLaunch"
+                >
 
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
+            </ansteph.com.cha.customview.Screening_item>
 
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
-                <Button
-                    android:id="@+id/dash_btn_hearing"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_hearing"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Hearing Language Speech" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_hearing"
-                    app:layout_anchorGravity="bottom|end"
-
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -184,46 +120,28 @@
             android:orientation="horizontal" >
 
 
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_BMI"
+                style="@style/coord"
+                app:title=""
+                app:leadingtitle= "BMI"
+                android:onClick="questionnaireLaunch"
+                android:clickable="true"
+                >
 
-                <Button
-                    android:id="@+id/dash_btn_BMI"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_calculator"
-                    android:onClick="questionnaireLaunch"
-                    android:text="BMI" />
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_BMI"
-                    app:layout_anchorGravity="bottom|end"
+            </ansteph.com.cha.customview.Screening_item>
 
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
+            <ansteph.com.cha.customview.Screening_item
+                android:id="@+id/dash_btn_Chronic"
+                style="@style/coord"
+                app:title="Chronic Disease"
+                app:leadingtitle= "C D"
+                android:onClick="questionnaireLaunch"
+                >
+
+            </ansteph.com.cha.customview.Screening_item>
 
 
-            <android.support.design.widget.CoordinatorLayout
-                style="@style/coord">
-                <Button
-                    android:id="@+id/dash_btn_Chronic"
-                    style="@style/HomeButton"
-                    android:drawableTop="@drawable/ic_chronic"
-                    android:onClick="questionnaireLaunch"
-                    android:text="Chronic Disease" />
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    app:layout_anchor="@id/dash_btn_Chronic"
-                    app:layout_anchorGravity="bottom|end"
-
-                    app:srcCompat="@drawable/ic_done_24dp"/>
-            </android.support.design.widget.CoordinatorLayout>
         </LinearLayout>
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package ansteph.com.cha.view.school;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +51,7 @@ public class EditSchool extends BaseActivity implements OnMapReadyCallback {
     protected void onPause() {
         exitToBottomAnimation();
         super.onPause();
+        mMapView.onPause();
     }
 
 
@@ -64,5 +66,29 @@ public class EditSchool extends BaseActivity implements OnMapReadyCallback {
         mGoogleMap = googleMap;
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         mGoogleMap.getUiSettings().setZoomGesturesEnabled(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
     }
 }
