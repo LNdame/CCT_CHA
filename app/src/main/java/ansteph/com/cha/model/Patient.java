@@ -208,9 +208,6 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "firstname='" + firstname + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
+        return firstname + " "+  surname ;
     }
 }

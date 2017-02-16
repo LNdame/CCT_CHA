@@ -193,8 +193,8 @@ public class PatientList extends AppCompatActivity {
             }
             holder.mBoundString = mPatientList.get(position).getFirstname();
             holder.mIcon.setShapeColor(mMaterialColors[RANDOM.nextInt(mMaterialColors.length)]);
-            holder.mTextView.setText(mPatientList.get(position).getFirstname());
-            holder.mIcon.setLetter(mPatientList.get(position).getFirstname());
+            holder.mTextView.setText(mPatientList.get(position).toString());
+            holder.mIcon.setLetter(mPatientList.get(position).getSurname());
         }
 
         @Override public int getItemCount() {
